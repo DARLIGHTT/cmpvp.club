@@ -1,14 +1,14 @@
 const API_BASE = "https://mctiers.com/api/v2";
 
-// Gamemodes mapped to PNG icon files
+// Gamemodes mapped to CDN icons with working fallbacks
 const GAMEMODES = [
-  { slug: "vanilla", name: "Vanilla", icon: "icons/vanilla.png" },
-  { slug: "uhc",     name: "UHC",     icon: "icons/heart.png" },
-  { slug: "pot",     name: "Pot",     icon: "icons/pot.png" },
-  { slug: "nethop",  name: "NethOP",  icon: "icons/nethop.png" },
-  { slug: "smp",     name: "SMP",     icon: "icons/mace.png" },
-  { slug: "sword",   name: "Sword",   icon: "icons/sword.png" },
-  { slug: "axe",     name: "Axe",     icon: "icons/axe.png" }
+  { slug: "vanilla", name: "Vanilla", icon: "https://mctiers.com/assets/vanilla-e765507b.png" },
+  { slug: "uhc",     name: "UHC",     icon: "https://mctiers.com/assets/uhc-f72be2cb.png" },
+  { slug: "pot",     name: "Pot",     icon: "https://mctiers.com/assets/pot-334a17bd.png" },
+  { slug: "nethop",  name: "NethOP",  icon: "https://mctiers.com/assets/nethop-7d045d6a.png" },
+  { slug: "smp",     name: "SMP",     icon: "https://mctiers.com/assets/smp-9b2f32a2.png" },
+  { slug: "sword",   name: "Sword",   icon: "https://mctiers.com/assets/sword-8647e3a9.png" },
+  { slug: "axe",     name: "Axe",     icon: "https://mctiers.com/assets/axe-c3cbbfbd.png" }
 ];
 
 function getTitle(points) {
@@ -44,7 +44,7 @@ function renderLiveRows(players) {
     const rank = index + 1;
     const title = getTitle(p.points);
 
-    // Build tier badges dynamically from the API rankings object
+    // Build tier badges dynamically from API rankings
     const tierBadgesHtml = GAMEMODES.map(mode => {
       const r = p.rankings ? p.rankings[mode.slug] : null;
       if (!r) return `<div class="badge badge-empty"></div>`;
@@ -56,7 +56,7 @@ function renderLiveRows(players) {
 
       return `
         <div class="badge ${tierNumClass}">
-          <img src="${mode.icon}" class="badge-img-icon" alt="${mode.name}">
+          <img src="${mode.icon}" class="badge-img-icon" alt="${mode.name}" onerror="this.style.display='none'">
           <span class="badge-label">${label}</span>
         </div>
       `;
