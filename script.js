@@ -1,6 +1,6 @@
 const API_BASE = "https://mctiers.com/api/v2";
 
-// Gamemodes mapped to your custom SVG URLs
+// Gamemodes mapped to your SVG URLs
 const GAMEMODES = [
   { slug: "vanilla", name: "Vanilla", icon: "https://trtiers.club/site/tier_icons/vanilla.svg" },
   { slug: "uhc",     name: "UHC",     icon: "https://trtiers.club/site/tier_icons/uhc.svg" },
@@ -10,6 +10,8 @@ const GAMEMODES = [
   { slug: "sword",   name: "Sword",   icon: "https://trtiers.club/site/tier_icons/sword.svg" },
   { slug: "axe",     name: "Axe",     icon: "https://trtiers.club/site/tier_icons/axe.svg" }
 ];
+
+let globalPlayersData = [];
 
 function getTitle(points) {
   if (points >= 400) return "Combat Grandmaster";
@@ -25,14 +27,30 @@ function rankBannerClass(rank) {
   return "rank-other";
 }
 
-// Fetch live overall rankings directly from MCTiers API v2
+function renderTabs() {
+  const wrap = document.getElementById("tabs");
+  if (!wrap) return;
+
+  const categories = [
+    { label: "Overall", icon: "https://trtiers.club/site/tier_icons/overall.svg" },
+    ...GAMEMODES
+  ];
+
+  wrap.innerHTML = categories.map((cat, i) => `
+    <button class="tab ${i === 0 ? "active" : ""}">
+      <img src="${cat.icon}" class="tab-img-icon" alt="${cat.name || cat.label}">
+      <span>${cat.name || cat.label}</span>
+    </button>
+  `).join("");
+}
+
 async function fetchLiveLeaderboard() {
   try {
     const response = await fetch(`${API_BASE}/mode/overall?count=25`);
-    const players = await response.json();
-    renderLiveRows(players);
+    globalPlayersData = await response.json();
+    renderLiveRows(globalPlayersData);
   } catch (error) {
-    console.error("Error fetching live MCTiers data:", error);
+    console.error("Error fetching MCTiers API:", error);
   }
 }
 
@@ -44,12 +62,10 @@ function renderLiveRows(players) {
     const rank = index + 1;
     const title = getTitle(p.points);
 
-    // Build tier badges dynamically from API rankings
     const tierBadgesHtml = GAMEMODES.map(mode => {
       const r = p.rankings ? p.rankings[mode.slug] : null;
       if (!r) return `<div class="badge badge-empty"></div>`;
 
-      // pos 0 = High Tier (HT), pos 1 = Low Tier (LT)
       const posPrefix = r.pos === 0 ? "HT" : "LT";
       const label = `${posPrefix}${r.tier}`;
       const tierNumClass = `tier-${r.tier}`;
@@ -74,8 +90,7 @@ function renderLiveRows(players) {
         <div class="col col-player">
           <div class="player-name">${p.name}</div>
           <div class="player-title">
-            <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v10l9 5 9-5V7z"/></svg>
-            ${title} <span class="player-points">(${p.points} points)</span>
+            🛡️ ${title} <span class="player-points">(${p.points} points)</span>
           </div>
         </div>
 
@@ -91,4 +106,11 @@ function renderLiveRows(players) {
   }).join("");
 }
 
+function filterPlayers() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+  const filtered = globalPlayersData.filter(p => p.name.toLowerCase().includes(query));
+  renderLiveRows(filtered);
+}
+
+renderTabs();
 fetchLiveLeaderboard();
