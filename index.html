@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCTIERS — Minecraft PvP Rankings</title>
+<title>CMPVP.CLUB — Rankings</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ============ HEADER ============ -->
+<!-- HEADER -->
 <header class="topbar">
   <div class="topbar-inner">
     <a class="logo" href="#">
-      <span class="logo-mc">MC</span><span class="logo-tiers">TIERS</span>
+      <span class="logo-mc">CM</span><span class="logo-tiers">TIERS</span>
     </a>
 
     <nav class="main-nav">
@@ -27,7 +27,6 @@
       <a href="#" class="nav-link">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.2 8.6a4.9 4.9 0 0 0-6.2 0L12 8.7l-.1-.1a4.9 4.9 0 1 0 0 6.9l.1-.1.1.1a4.9 4.9 0 1 0 6.1-6.9Z"/></svg>
         Discords
-        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
       </a>
       <a href="#" class="nav-link">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M15 2v5h5"/></svg>
@@ -37,42 +36,19 @@
 
     <div class="search-wrap">
       <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" placeholder="Search player..." class="search-input">
+      <input type="text" id="searchInput" placeholder="Search player..." class="search-input" onkeyup="filterPlayers()">
       <kbd class="search-kbd">/</kbd>
     </div>
   </div>
 </header>
 
-<!-- ============ CATEGORY TABS ============ -->
+<!-- CATEGORY TABS -->
 <div class="tabs-wrap">
-  <div class="tabs-inner" id="tabs">
-    <!-- populated by JS -->
-  </div>
+  <div class="tabs-inner" id="tabs"></div>
 </div>
 
-<!-- ============ MAIN CONTENT ============ -->
+<!-- MAIN LEADERBOARD -->
 <main class="page">
-  <div class="board-toolbar">
-    <button class="info-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 16v-4.5M12 8.2h.01"/></svg>
-      Information
-    </button>
-
-    <div class="server-info">
-      <span class="server-logo"></span>
-      <div class="server-text">
-        <span class="server-label">SERVER IP</span>
-        <span class="server-ip">mcpvp.club</span>
-      </div>
-      <button class="copy-btn" title="Copy IP">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4.5A2.5 2.5 0 0 1 2 12.5v-8A2.5 2.5 0 0 1 4.5 2h8A2.5 2.5 0 0 1 15 4.5V5"/></svg>
-      </button>
-      <a class="discord-btn" href="#" title="Discord">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.7A19.8 19.8 0 0 0 15.6 3c-.2.4-.5.9-.7 1.3a18 18 0 0 0-5.8 0A9 9 0 0 0 8.4 3a19.7 19.7 0 0 0-4.7 1.7C1 9.4.3 14 .6 18.5a20 20 0 0 0 6 3c.5-.6.9-1.3 1.2-2a13 13 0 0 1-1.9-.9l.5-.4a14.3 14.3 0 0 0 12.2 0l.5.4c-.6.4-1.3.7-2 .9.4.7.8 1.4 1.3 2a20 20 0 0 0 6-3c.4-5.2-1-9.8-3.6-13.8ZM8.3 15.8c-1.1 0-2-1-2-2.3 0-1.2.9-2.3 2-2.3s2 1 2 2.3-.9 2.3-2 2.3Zm7.4 0c-1.1 0-2-1-2-2.3 0-1.2.9-2.3 2-2.3s2 1 2 2.3-.9 2.3-2 2.3Z"/></svg>
-      </a>
-    </div>
-  </div>
-
   <div class="table-card">
     <div class="table-header-row">
       <div class="col col-rank">#</div>
@@ -85,7 +61,6 @@
   </div>
 </main>
 
-<script src="data.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
