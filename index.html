@@ -3,38 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MC Tiers - Leaderboard</title>
+  <title>MC TIERS - Rankings</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="logo">MC TIERS</div>
-    <div class="nav-links">
-      <a href="#" class="active">Overall</a>
-      <a href="#">LTMs</a>
-      <a href="#">Vanilla</a>
-      <a href="#">UHC</a>
-      <a href="#">Pot</a>
+  <!-- Top Navigation Bar -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <div class="logo">MC<span>TIERS</span></div>
+      <a href="#" class="nav-item"><i class="fas fa-home"></i> Home</a>
+      <a href="#" class="nav-item active"><i class="fas fa-trophy"></i> Rankings</a>
+      <a href="#" class="nav-item"><i class="fab fa-discord"></i> Discords</a>
+      <a href="#" class="nav-item"><i class="fas fa-file-code"></i> API Docs</a>
     </div>
-  </nav>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search player... /" onkeyup="filterPlayers()">
+    </div>
+  </header>
 
-  <!-- Main Container -->
-  <main class="container">
-    <table class="leaderboard">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>PLAYER</th>
-          <th>REGION</th>
-          <th>TIERS</th>
-        </tr>
-      </thead>
-      <tbody id="player-rows">
-        <!-- JavaScript will automatically populate rows here -->
-      </tbody>
-    </table>
+  <main class="main-content">
+    <!-- Category Navigation Buttons -->
+    <div class="categories">
+      <button class="cat-btn active">🏆 Overall</button>
+      <button class="cat-btn">⚔️ LTMs</button>
+      <button class="cat-btn">🔮 Vanilla</button>
+      <button class="cat-btn">❤️ UHC</button>
+      <button class="cat-btn">🧪 Pot</button>
+      <button class="cat-btn">👾 NethOP</button>
+      <button class="cat-btn">🌐 SMP</button>
+      <button class="cat-btn">🗡️ Sword</button>
+      <button class="cat-btn">🪓 Axe</button>
+    </div>
+
+    <!-- Leaderboard Table -->
+    <div class="table-container">
+      <table class="leaderboard">
+        <thead>
+          <tr>
+            <th class="col-rank">#</th>
+            <th class="col-player">PLAYER</th>
+            <th class="col-region">REGION</th>
+            <th class="col-tiers">TIERS</th>
+          </tr>
+        </thead>
+        <tbody id="player-rows">
+          <!-- Populated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
   </main>
 
   <script src="script.js"></script>
