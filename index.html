@@ -1,66 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CMPVP.CLUB — Rankings</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMPVP.CLUB — Rankings</title>
+  <!-- Fixed CSS link point -->
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="topbar">
-  <div class="topbar-inner">
-    <a class="logo" href="#">
-      <span class="logo-mc">CM</span><span class="logo-tiers">TIERS</span>
-    </a>
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo" href="#">
+        <span class="logo-mc">CM</span><span class="logo-tiers">TIERS</span>
+      </a>
 
-    <nav class="main-nav">
-      <a href="#" class="nav-link active">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10.5 9-7.5 9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
-        Home
-      </a>
-      <a href="#" class="nav-link">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M7 5H4a1 1 0 0 0-1 1v1a4 4 0 0 0 4 4"/><path d="M17 5h3a1 1 0 0 1 1 1v1a4 4 0 0 1-4 4"/></svg>
-        Rankings
-      </a>
-      <a href="#" class="nav-link">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.2 8.6a4.9 4.9 0 0 0-6.2 0L12 8.7l-.1-.1a4.9 4.9 0 1 0 0 6.9l.1-.1.1.1a4.9 4.9 0 1 0 6.1-6.9Z"/></svg>
-        Discords
-      </a>
-      <a href="#" class="nav-link">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M15 2v5h5"/></svg>
-        API Docs
-      </a>
-    </nav>
+      <nav class="main-nav">
+        <a href="#" class="nav-link active">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 10.5 9-7.5 9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+          Home
+        </a>
+        <a href="#" class="nav-link">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M7 5H4a1 1 0 0 0-1 1v1a4 4 0 0 0 4 4"/><path d="M17 5h3a1 1 0 0 1 1 1v1a4 4 0 0 1-4 4"/></svg>
+          Rankings
+        </a>
+        <a href="#" class="nav-link">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.2 8.6a4.9 4.9 0 0 0-6.2 0L12 8.7l-.1-.1a4.9 4.9 0 1 0 0 6.9l.1-.1.1.1a4.9 4.9 0 1 0 6.1-6.9Z"/></svg>
+          Discords
+        </a>
+        <a href="#" class="nav-link">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M15 2v5h5"/></svg>
+          API Docs
+        </a>
+      </nav>
 
-    <div class="search-wrap">
-      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="searchInput" placeholder="Search player..." class="search-input" onkeyup="filterPlayers()">
-      <kbd class="search-kbd">/</kbd>
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Search player..." class="search-input" onkeyup="filterPlayers()">
+        <kbd class="search-kbd">/</kbd>
+      </div>
     </div>
+  </header>
+
+  <!-- CATEGORY TABS -->
+  <div class="tabs-wrap">
+    <div class="tabs-inner" id="tabs"></div>
   </div>
-</header>
 
-<!-- CATEGORY TABS -->
-<div class="tabs-wrap">
-  <div class="tabs-inner" id="tabs"></div>
-</div>
+  <!-- MAIN BOARD -->
+  <main class="page">
+    <div class="table-card">
+      <div class="table-header-row">
+        <div class="col col-rank">#</div>
+        <div class="col col-player">PLAYER</div>
+        <div class="col col-region">REGION</div>
+        <div class="col col-tiers">TIERS</div>
+      </div>
 
-<!-- MAIN LEADERBOARD -->
-<main class="page">
-  <div class="table-card">
-    <div class="table-header-row">
-      <div class="col col-rank">#</div>
-      <div class="col col-player">PLAYER</div>
-      <div class="col col-region">REGION</div>
-      <div class="col col-tiers">TIERS</div>
+      <div id="rows"></div>
     </div>
+  </main>
 
-    <div id="rows"></div>
-  </div>
-</main>
-
-<script src="script.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
