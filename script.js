@@ -1,14 +1,14 @@
 const API_BASE = "https://mctiers.com/api/v2";
 
-// Gamemodes mapped to CDN icons with working fallbacks
+// Gamemodes mapped to your custom SVG URLs
 const GAMEMODES = [
-  { slug: "vanilla", name: "Vanilla", icon: "https://mctiers.com/assets/vanilla-e765507b.png" },
-  { slug: "uhc",     name: "UHC",     icon: "https://mctiers.com/assets/uhc-f72be2cb.png" },
-  { slug: "pot",     name: "Pot",     icon: "https://mctiers.com/assets/pot-334a17bd.png" },
-  { slug: "nethop",  name: "NethOP",  icon: "https://mctiers.com/assets/nethop-7d045d6a.png" },
-  { slug: "smp",     name: "SMP",     icon: "https://mctiers.com/assets/smp-9b2f32a2.png" },
-  { slug: "sword",   name: "Sword",   icon: "https://mctiers.com/assets/sword-8647e3a9.png" },
-  { slug: "axe",     name: "Axe",     icon: "https://mctiers.com/assets/axe-c3cbbfbd.png" }
+  { slug: "vanilla", name: "Vanilla", icon: "https://trtiers.club/site/tier_icons/vanilla.svg" },
+  { slug: "uhc",     name: "UHC",     icon: "https://trtiers.club/site/tier_icons/uhc.svg" },
+  { slug: "pot",     name: "Pot",     icon: "https://trtiers.club/site/tier_icons/smp.svg" },
+  { slug: "nethop",  name: "NethOP",  icon: "https://trtiers.club/site/tier_icons/nethop.svg" },
+  { slug: "smp",     name: "SMP",     icon: "https://trtiers.club/site/tier_icons/mace.svg" },
+  { slug: "sword",   name: "Sword",   icon: "https://trtiers.club/site/tier_icons/sword.svg" },
+  { slug: "axe",     name: "Axe",     icon: "https://trtiers.club/site/tier_icons/axe.svg" }
 ];
 
 function getTitle(points) {
@@ -56,7 +56,7 @@ function renderLiveRows(players) {
 
       return `
         <div class="badge ${tierNumClass}">
-          <img src="${mode.icon}" class="badge-img-icon" alt="${mode.name}" onerror="this.style.display='none'">
+          <img src="${mode.icon}" class="badge-img-icon" alt="${mode.name}">
           <span class="badge-label">${label}</span>
         </div>
       `;
