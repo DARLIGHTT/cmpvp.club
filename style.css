@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #0d1117;
+  color: #f0f6fc;
+  padding: 20px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #161b22;
+  padding: 15px 30px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f1c40f;
+  letter-spacing: 2px;
+}
+
+.nav-links a {
+  color: #8b949e;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+.nav-links a.active, .nav-links a:hover {
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.leaderboard {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.leaderboard th {
+  color: #8b949e;
+  text-align: left;
+  padding: 10px 15px;
+  font-size: 0.85rem;
+}
+
+.player-row {
+  background-color: #161b22;
+  border-radius: 6px;
+}
+
+.player-row td {
+  padding: 12px 15px;
+  vertical-align: middle;
+}
+
+.rank {
+  font-size: 1.2rem;
+  font-weight: italic;
+  font-style: italic;
+  color: #f1c40f;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.player-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.region-tag {
+  background-color: #da3633;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.region-tag.EU {
+  background-color: #238636;
+}
+
+.tier-badges {
+  display: flex;
+  gap: 6px;
+}
+
+.badge {
+  background-color: #21262d;
+  border: 1px solid #30363d;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: #e6edf3;
+  font-weight: bold;
+}
+
+.badge.gold {
+  color: #f1c40f;
+  border-color: #f1c40f;
+}
